@@ -153,41 +153,80 @@ gets(vetorChar);
 
 ```c
 int i;
+
+printf("%s",vetorChar);
+
 while(vetorChar[i] != '\0')
 {
-    vetorChar[i] = a;
+    //vetorChar[i] = a;
+    printf("%c",vetorChar[i]);
     i++;
 }
+
 ```
 
-
-
 # Matrizes
-
-:
 
 ### Declarar
 
 ```C
-int vetorInt[10];
-float vetorFloat[10];
+int linhas, colunas;
+scanf("%d",&linhas);
+scanf("%d",&colunas);
+int vetorInt[linhas][colunas];
 ```
 
 ### Percorrer
 
 ```c
 int i;
-for (i=0;i<10;i++)
+for (i=0;i<linhas;i++) //linhas
 {
-    vetorInt[10] = i;
+    for (j=0;j<colunas;j++) //colunas
+    {
+        matrizInt[i][j] = 2;
+    }
 }
-for (i=0;i<10;i++)
+
+```
+
+Ilustrando:
+
+```C
+int matrizInt[2][2];
+int i,j;
+
+matrizInt[0][0] = 15;
+matrizInt[0][1] = 13;
+matrizInt[1][0] = 2;
+matrizInt[1][1] = 3;
+// e percorrendo:
+for (i=0;i<2;i++) //linhas
 {
-    vetorFloat[10] = i + 0.25;
+    for (j=0;j<2;j++) //colunas
+    {
+        printf("%d",matrizInt[i][j]);
+    }
 }
 ```
 
+​	Neste exemplo trabalhamos com um vetor inteiro de tamanho 3 representado por `[ 4, 3, 100 ]` e olha como seria cada repetição desse for:
 
+
+
+Neste exemplo trabalhamos com uma matriz inteira de tamanho 2x2 representado por:
+$$
+\left[  \begin{array}{col_1 col_2 … col_n}
+    15 & 13\\
+    2 & 3\\
+    \end{array} \right]
+$$
+Para cada repetição de cada for faremos:
+
+1. Para `i`  e `j` igual a `0` estariamos na primeira linha por conta do `i = 0` e na primeira coluna por causa do `j = 0` ou seja :point_right: [ **​​15**, 13 ] e então mostramos o numero 15;
+2. Para `i = 0`  e `j = 1` iainda estariamos na primeira linha porém passamos uma coluna para frente por causa do `j = 1` ou seja :point_right: [ 15, **13** ] e então mostramos o numero 13;
+3. Agora chegando ao final do for interno(for de `j`) incrementamos em uma vez o `i` e então como `i = 1` passamos para a próxima linha e resetamos o `j` para ` 0` ou seja :point_right: [ **2**, 3 ] e então mostramos o numero 2;
+4. E por fim para `j` e `i` igual a `1` estaremos em :point_right: [ 2, **3** ] e então mostramos o numero 3;
 
 # Funções
 
@@ -269,10 +308,6 @@ int main(void){
 
 
 
-# 
-
-# 
-
 # Exercite
 
 Leia um texto (matriz de strings)  e faça funções para:
@@ -285,7 +320,7 @@ Leia um texto (matriz de strings)  e faça funções para:
   - "d" corresponde ao int 100 nas tabel ASCII;
   - 100 não é primo;
 
-- Encontrar vogal e separar-la do restante da palavra com " - " e imprima o texto; 
+- Encontrar vogal e separar-la do restante da palavra com " - " imprima o texto; 
   - Batatao => B-a-t-a-t-a--o-;
   - Ovelha => -O-v-e-lh-a-.
 
